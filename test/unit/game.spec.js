@@ -20,20 +20,27 @@ describe('Game', () => {
     });
   });
   describe('initiate pieces', () => {
-    const p1 = new Player({ name: 'Bob', playerNumber: 1 });
-    const p2 = new Player({ name: 'Anna', playerNumber: 2 });
-    const g1 = new Game(p1, p2);
-    g1.initiate();
-    expect(g1.pieces[0].row).to.equal(1);
-    expect(g1.pieces[0].col).to.equal(2);
-    expect(g1.pieces[11].row).to.equal(3);
-    expect(g1.pieces[11].col).to.equal(8);
-    expect(g1.pieces[4].color).to.equal('red');
-    expect(g1.pieces[12].row).to.equal(6);
-    expect(g1.pieces[12].col).to.equal(1);
-    expect(g1.pieces[23].row).to.equal(8);
-    expect(g1.pieces[23].col).to.equal(7);
-    expect(g1.pieces.length).to.equal(24);
-    expect(g1.pieces[20].color).to.equal('black');
+    it('should initiate game object', () => {
+      const p1 = new Player({ name: 'Bob', playerNumber: 1 });
+      const p2 = new Player({ name: 'Anna', playerNumber: 2 });
+      const g1 = new Game(p1, p2);
+      g1.initiate();
+      expect(g1.position.length).to.equal(64);
+      expect(g1.position.find((a) => a.name === '12').val.color).to.equal('red');
+      expect(g1.position.find((a) => a.name === '11').val).to.be.null;
+      expect(g1.position.find((a) => a.name === '61').val.color).to.equal('black');
+      expect(g1.position.find((a) => a.name === '88').val).to.be.null;
+    });
+  });
+  describe('move a piece', () => {
+    it('should move a piece', () => {
+      const p1 = new Player({ name: 'Bob', playerNumber: 1 });
+      const p2 = new Player({ name: 'Anna', playerNumber: 2 });
+      const g1 = new Game(p1, p2);
+      g1.initiate();
+      g1.move({ r: 3, c: 2 }, { r: 4, c: 3 });
+      expect(g1.position.find((a) => a.name === '32').val).to.be.null;
+      expect(g1.position.find((a) => a.name === '43').val.color).to.equal('red');
+    });
   });
 });

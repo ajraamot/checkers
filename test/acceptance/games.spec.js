@@ -26,7 +26,6 @@ describe('game', () => {
         expect(rsp.body.game.player2.name).to.equal('Anna');
         expect(rsp.body.game.turn).to.equal(1);
         expect(rsp.body.game.gameover).to.equal(false);
-        expect(rsp.body.game.pieces.length).to.equal(24);
         done();
       });
     });

@@ -6,9 +6,7 @@ const Piece = require('../../dst/models/piece');
 describe('Piece', () => {
   describe('constructor', () => {
     it('should create piece object', () => {
-      const piece = new Piece({ row: 1, col: 1, color: 'red' });
-      expect(piece.row).to.equal(1);
-      expect(piece.col).to.equal(1);
+      const piece = new Piece({ color: 'red' });
       expect(piece.color).to.equal('red');
 // let d='d'
 // console.log(Number(d)+3);
