@@ -1,0 +1,382 @@
+[
+  {
+    "_id" : { "$oid":"5787f3390ffb884065a7133a"},
+    "player1" : { "$oid":"01234567890123456789abcd"},
+    "player2" : { "$oid":"01234567890123456789abce"},
+    "position" : [],
+    "gameover" : false,
+    "turn" : "red",
+    "__v" : 0
+  },
+  {
+    "_id" : { "$oid":"5787f3390ffb884065a7133b"},
+    "player1" : { "$oid":"01234567890123456789abcd"},
+    "player2" : { "$oid":"01234567890123456789abce"},
+    "position" : [],
+    "gameover" : false,
+    "turn" : "red",
+    "__v" : 0
+},
+{
+    "_id" : { "$oid":"5787f3390ffb884065a7133c"},
+    "player1" : { "$oid":"01234567890123456789abcd"},
+    "player2" : { "$oid":"01234567890123456789abce"},
+    "position" : [
+        {
+            "name" : "11",
+            "val" : null
+        },
+        {
+            "name" : "12",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "13",
+            "val" : null
+        },
+        {
+            "name" : "14",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "15",
+            "val" : null
+        },
+        {
+            "name" : "16",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "17",
+            "val" : null
+        },
+        {
+            "name" : "18",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "21",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "22",
+            "val" : null
+        },
+        {
+            "name" : "23",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "24",
+            "val" : null
+        },
+        {
+            "name" : "25",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "26",
+            "val" : null
+        },
+        {
+            "name" : "27",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "28",
+            "val" : null
+        },
+        {
+            "name" : "31",
+            "val" : null
+        },
+        {
+            "name" : "32",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "33",
+            "val" : null
+        },
+        {
+            "name" : "34",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "35",
+            "val" : null
+        },
+        {
+            "name" : "36",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "37",
+            "val" : null
+        },
+        {
+            "name" : "38",
+            "val" : {
+                "color" : "red",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "41",
+            "val" : null
+        },
+        {
+            "name" : "42",
+            "val" : null
+        },
+        {
+            "name" : "43",
+            "val" : null
+        },
+        {
+            "name" : "44",
+            "val" : null
+        },
+        {
+            "name" : "45",
+            "val" : null
+        },
+        {
+            "name" : "46",
+            "val" : null
+        },
+        {
+            "name" : "47",
+            "val" : null
+        },
+        {
+            "name" : "48",
+            "val" : null
+        },
+        {
+            "name" : "51",
+            "val" : null
+        },
+        {
+            "name" : "52",
+            "val" : null
+        },
+        {
+            "name" : "53",
+            "val" : null
+        },
+        {
+            "name" : "54",
+            "val" : null
+        },
+        {
+            "name" : "55",
+            "val" : null
+        },
+        {
+            "name" : "56",
+            "val" : null
+        },
+        {
+            "name" : "57",
+            "val" : null
+        },
+        {
+            "name" : "58",
+            "val" : null
+        },
+        {
+            "name" : "61",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "62",
+            "val" : null
+        },
+        {
+            "name" : "63",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "64",
+            "val" : null
+        },
+        {
+            "name" : "65",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "66",
+            "val" : null
+        },
+        {
+            "name" : "67",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "68",
+            "val" : null
+        },
+        {
+            "name" : "71",
+            "val" : null
+        },
+        {
+            "name" : "72",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "73",
+            "val" : null
+        },
+        {
+            "name" : "74",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "75",
+            "val" : null
+        },
+        {
+            "name" : "76",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "77",
+            "val" : null
+        },
+        {
+            "name" : "78",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "81",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "82",
+            "val" : null
+        },
+        {
+            "name" : "83",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "84",
+            "val" : null
+        },
+        {
+            "name" : "85",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "86",
+            "val" : null
+        },
+        {
+            "name" : "87",
+            "val" : {
+                "color" : "black",
+                "kinged" : false,
+                "active" : true
+            }
+        },
+        {
+            "name" : "88",
+            "val" : null
+        }
+    ],
+    "gameover" : false,
+    "turn" : "red",
+    "__v" : 1
+}
+]

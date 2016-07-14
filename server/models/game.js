@@ -1,17 +1,17 @@
-/* eslint-disable max-len, func-names, consistent-return*/
+/* eslint-disable max-len, func-names, consistent-return, no-underscore-dangle*/
 import Piece from './piece';
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-function Game(player1, player2) {
-  if (!player1 || !player2) { return new Error('missing arguments'); }
-  this.player1 = player1;
-  this.player2 = player2;
-  this.turn = 1;
-  this.gameover = false;
-  // this.pieces = [];
-  this.position = [];
-}
+const schema = new Schema({
+  player1: { type: mongoose.Schema.ObjectId, ref: 'Player', required: true },
+  player2: { type: mongoose.Schema.ObjectId, ref: 'Player', required: true },
+  turn: { type: String, default: 'red' },
+  gameover: { type: Boolean, default: false },
+  position: [],
+});
 
-Game.prototype.initiate = function () { // instance method
+schema.methods.initiate = function () { // instance method
   for (let r = 1; r <= 8; r++) {
     for (let c = 1; c <= 8; c++) {
       let a = {};
@@ -51,26 +51,36 @@ Game.prototype.initiate = function () { // instance method
       this.position.push(a);
     }
   }
-  console.log(this.position);
+  // schema.findByIdAndUpdate({ _id: this._id }, () => {
+    //
+  // });
 };
 
-Game.prototype.move = function (origin, dest) {
+schema.methods.move = function (origin, dest) {
+  if (dest.r <= 0 || dest.r > 8) return new Error('invalid move: move out of bounds');
+  if (dest.c <= 0 || dest.c > 8) return new Error('invalid move: move out of bounds');
   if (this.position.find((a) => a.name === `${origin.r}${origin.c}`).val === null) {
     return new Error('invalid move: no piece at that position');
   }
-  const piece = this.position.find((a) => a.name === `${origin.r}${origin.c}`);
-  console.log(piece);
-
-// 1st: find if there is a piece in the origin
-// is there a piece at dest
-// is the move is valid : (within board)
-// is the move is valid : (one pos over and across)
-// if not kinged cannot move backward
-
-// change the position of dest to the have the obj
-// null the origin position
-
-
+  if (this.position.find((a) => a.name === `${dest.r}${dest.c}`).val !== null) {
+    return new Error('invalid move: cannot move to that position, already occupied');
+  }
+  if (Math.abs(origin.r - dest.r) !== 1 || Math.abs(origin.c - dest.c) !== 1) {
+    return new Error('invalid move: can only move diagonally one space');
+  }
+  const piece = this.position.find((a) => a.name === `${origin.r}${origin.c}`).val;
+  if (piece.color !== this.turn) {
+    return new Error(`invalid move: It is the ${this.turn}'s turn`);
+  }
+  if (piece.color === 'red' && piece.kinged === false && (origin.r - dest.r) === 1) {
+    return new Error('invalid move: can only move forward until kinged');
+  }
+  if (piece.color === 'black' && piece.kinged === false && (origin.r - dest.r) === -1) {
+    return new Error('invalid move: can only move forward until kinged');
+  }
+  this.position.find((a) => a.name === `${dest.r}${dest.c}`).val = piece;
+  this.position.find((a) => a.name === `${origin.r}${origin.c}`).val = null;
+  this.turn = this.turn === 'red' ? 'black' : 'red';
 };
 
-module.exports = Game;
+module.exports = mongoose.model('Game', schema);

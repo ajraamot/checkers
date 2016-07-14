@@ -3,8 +3,8 @@
 import joi from 'joi';
 
 const schema = {
-  player1: joi.string().required(),
-  player2: joi.string().required(),
+  origin: joi.object().required(),
+  dest: joi.object().required(),
 //  dateCreated: joi.date(),
   // url: joi.string().uri().required(),
   // description: joi.string(),
