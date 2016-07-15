@@ -1,5 +1,5 @@
 /* eslint-disable newline-per-chained-call, new-cap, no-param-reassign, consistent-return, no-underscore-dangle, array-callback-return, max-len */
-
+import logger from '../config/logging';
 import express from 'express';
 import Player from '../models/player';
 import Game from '../models/game';
@@ -34,24 +34,36 @@ router.post('/', gameValidator, (req, res) => {
 });
 
 router.put('/:id/move', paramsValidator, moveValidator, (req, res) => {
+  logger.log('info', `starting to process move for game: ${req.params.id}`);
   Game.findById(req.params.id, (err, game) => {
+    logger.log('info', `err: ${err}`);
     if (!game) res.status(400).send(new Error('Game not found'));
     else {
-      game.initiate();
+      logger.log('info', `found game: ${game._id}`);
+      logger.log('info', `moving piece from : ${res.locals.origin} to: ${res.locals.dest}`);
       game.move(res.locals.origin, res.locals.dest);
-      // console.log(game);
-      res.send({ game });
+      game.save(() => {
+        logger.log('info', 'game saved');
+        res.send({ game });
+      });
     }
   });
 });
 
-
-// update
-// router.put('/:id', paramsValidator, bodyValidator, (req, res) => {
-//   Bookmark.findByIdAndUpdate(req.params.id, res.locals, { new: true }, (err, bookmark) => {
-//     res.send({ bookmark });
-//   });
-// });
-
-// router.put('/:id/move', gameValidator, (req, res) => {
-// });
+router.put('/:id/jump', paramsValidator, moveValidator, (req, res) => {
+  logger.log('info', `starting to process move for game: ${req.params.id}`);
+  Game.findById(req.params.id, (err, game) => {
+    logger.log('info', `err: ${err}`);
+    if (!game) res.status(400).send(new Error('Game not found'));
+    else {
+      logger.log('info', `found game: ${game._id}`);
+      logger.log('info', `moving piece from : ${res.locals.origin} to: ${res.locals.dest}`);
+      game.jump(res.locals.origin, res.locals.dest);
+      game.save(() => {
+        logger.log('info', 'game saved');
+        if (!game.gameover) res.send({ game });
+        else { if (game.redPieces === 0) res.send('Black won!'); else res.send('Black won!'); }
+      });
+    }
+  });
+});

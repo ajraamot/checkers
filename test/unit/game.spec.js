@@ -70,4 +70,43 @@ describe('Game', () => {
       expect(g1.position.find((a) => a.name === '32').val.color).to.equal('red');
     });
   });
+  describe('jump a piece', () => {
+    it('should jump a piece', () => {
+      const p1 = new Player({ name: 'Bob', playerNumber: 1 });
+      const p2 = new Player({ name: 'Anna', playerNumber: 2 });
+      const g1 = new Game(p1, p2);
+      g1.initiate();
+      g1.move({ r: 3, c: 2 }, { r: 4, c: 3 });
+      g1.move({ r: 6, c: 5 }, { r: 5, c: 4 });
+      g1.jump({ r: 4, c: 3 }, { r: 6, c: 5 });
+      expect(g1.position.find((a) => a.name === '43').val).to.be.null;
+      expect(g1.position.find((a) => a.name === '54').val).to.be.null;
+      expect(g1.position.find((a) => a.name === '65').val.color).to.equal('red');
+      expect(g1.redPieces).to.equal(12);
+      expect(g1.blackPieces).to.equal(11);
+    });
+    it('should not jump a piece', () => {
+      const p1 = new Player({ name: 'Bob', playerNumber: 1 });
+      const p2 = new Player({ name: 'Anna', playerNumber: 2 });
+      const g1 = new Game(p1, p2);
+      g1.initiate();
+      let z = g1.jump({ r: 1, c: 1 }, { r: 2, c: 2 });
+      expect(z).to.be.Error;
+      expect(z.message).to.equal('invalid jump: no piece at that position');
+      z = g1.jump({ r: 6, c: 3 }, { r: 7, c: 2 });
+      expect(z).to.be.Error;
+      expect(z.message).to.equal('invalid jump: cannot jump to that position, already occupied');
+      expect(g1.position.find((a) => a.name === '63').val.color).to.equal('black');
+      z = g1.jump({ r: 2, c: 1 }, { r: 3, c: 0 });
+      expect(z).to.be.Error;
+      expect(z.message).to.equal('invalid jump: jump out of bounds');
+      z = g1.jump({ r: 1, c: 2 }, { r: 0, c: 1 });
+      expect(z).to.be.Error;
+      expect(z.message).to.equal('invalid jump: jump out of bounds');
+      z = g1.jump({ r: 3, c: 2 }, { r: 4, c: 4 });
+      expect(z).to.be.Error;
+      expect(z.message).to.equal('invalid jump: can only jump diagonally two spaces');
+      expect(g1.position.find((a) => a.name === '32').val.color).to.equal('red');
+    });
+  });
 });
