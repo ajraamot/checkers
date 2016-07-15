@@ -109,4 +109,28 @@ describe('Game', () => {
       expect(g1.position.find((a) => a.name === '32').val.color).to.equal('red');
     });
   });
+  describe('king a piece', () => {
+    it('should king a piece', () => {
+      const p1 = new Player({ name: 'Bob', playerNumber: 1 });
+      const p2 = new Player({ name: 'Anna', playerNumber: 2 });
+      const g1 = new Game(p1, p2);
+      g1.initiate();
+      g1.position[28] = { name: '43', val: null };
+      g1.position[35] = { name: '54', val: null };
+      g1.position[44] = { name: '65', val: null };
+      g1.position[53] = { name: '76', val: null };
+      g1.position[62] = { name: '87', val: null };
+      g1.move({ r: 3, c: 2 }, { r: 4, c: 3 }); // red
+      g1.turn = 'red';
+      g1.move({ r: 4, c: 3 }, { r: 5, c: 4 }); // red
+      g1.turn = 'red';
+      g1.move({ r: 5, c: 4 }, { r: 6, c: 5 }); // red
+      g1.turn = 'red';
+      g1.move({ r: 6, c: 5 }, { r: 7, c: 6 }); // red
+      g1.turn = 'red';
+      g1.move({ r: 7, c: 6 }, { r: 8, c: 7 }); // red
+      expect(g1.position.find((a) => a.name === '87').val.color).to.equal('red');
+      expect(g1.position.find((a) => a.name === '87').val.kinged).to.equal(true);
+    });
+  });
 });
